@@ -127,14 +127,15 @@ This allows the application to focus on **game logic**, not security implementat
 
 ## 🗂️ Code Structure Overview
 
-###src/
-###│── actions/ → Redux action definitions
-###│── reducers/ → Redux reducers
-###│── pages/ → Main pages (AuthPage, Game)
-###│── components/ → Reusable UI components
-###│── supabaseClient.js → Supabase configuration
-###│── App.js → Root component
-###│── index.js → Application entry point
+src/\
+├── actions/     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      # Redux actions (game logic)\
+├── components/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      # Reusable UI components (cards, modals, score)\
+├── pages/       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      # Main pages (AuthPage, Game)\
+├── reducers/    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     # Redux reducers\
+├── utils/    &nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    # Card generation and helper logic\
+├── styles/      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      # Global and component-level CSS\
+├── supabaseClient.js &nbsp; # Supabase configuration\
+└── App.js            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Application entry logic
 
 
 **Architecture Style:**  
