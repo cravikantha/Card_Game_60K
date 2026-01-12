@@ -1,5 +1,5 @@
 # 🎴 Card Game 60K  
-### Distributed Service Architectures - module
+### Distributed Service Architectures
 
 ---
 
