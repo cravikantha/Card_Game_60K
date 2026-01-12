@@ -1,5 +1,5 @@
 # 🎴 Card Game 60K  
-### CIS045-3 – Distributed Service Architectures (AY 25/26)
+### Distributed Service Architectures - module
 
 ---
 
