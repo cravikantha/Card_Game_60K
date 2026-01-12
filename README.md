@@ -1,221 +1,198 @@
-🃏 Card Game 60K
-📌 Project Purpose
+# 🎴 Card Game 60K  
+### CIS045-3 – Distributed Service Architectures (AY 25/26)
 
-The purpose of this project is to design and implement an interactive web-based card game using modern web technologies while applying software engineering principles such as low coupling, high cohesion, event-driven architecture, interoperability, and virtual identity management.
+---
 
-This project was developed as part of my academic coursework to demonstrate:
+## 📌 Project Purpose
+The purpose of this project is to design and implement a web-based card game that demonstrates key concepts of **Distributed Service Architectures**.  
+This project is based on an open-source card game and has been **extended, refactored, and re-architected** to meet academic and technical requirements.
 
-Practical use of React and Redux
+The focus areas include:
+- Low Coupling & High Cohesion
+- Event-Driven Architecture
+- Interoperability with external services
+- Virtual Identity and authentication
+- Clean, modular frontend architecture
 
-Integration with cloud-based backend services
+---
 
-Secure user authentication
+## 🎮 Game Overview
+**Card Game 60K** is a time-based card matching game designed for both entertainment and architectural demonstration.
 
-Real-time leaderboard and score tracking
+**Key Features**
+- User authentication (Login / Register)
+- Time-based gameplay
+- Score calculation and persistence
+- Global leaderboard
+- Restart and logout functionality
+- Sound effects and background audio
 
-Clean and maintainable code structure
+---
 
-🎮 Project Overview
+## 🖼️ User Interface Screens
 
-Card Game 60K is a browser-based card matching game where:
+### 🔐 Login Screen  
+![Login UI](loging%20UI.png)
 
-Users log in using a secure authentication system
+- Users log in using email and password
+- Authentication handled via Supabase
+- Session maintained using Supabase Auth
 
-Players interact with cards using mouse clicks
+---
 
-Scores are calculated dynamically
+### 📝 Registration Screen  
+![Register UI](REGISTER%20UI.png)
 
-Final scores are saved to a cloud database
+- New users can register with:
+  - Email
+  - Display Name
+  - Password
+- Display Name is later shown in the Leaderboard
+- User identity is managed virtually (no local password storage)
 
-A global leaderboard displays top players
+---
 
-The game is designed to be simple, responsive, and engaging, while maintaining a strong technical foundation.
+### 🃏 Game Play Screen  
+![Game UI](GAME%20UI.png)
 
-🛠️ Technologies Used
-Frontend
+- Card grid rendered dynamically
+- Timer-driven gameplay
+- Score updates based on card matching
+- Leaderboard visible alongside the game
 
-React.js – UI development
+---
 
-Redux – State management
+## 🧠 Architecture Overview
 
-React Bootstrap – UI components & layout
+### 1️⃣ Low Coupling & High Cohesion
+- UI components are separated by responsibility (Auth, Game, Leaderboard)
+- Business logic is isolated from presentation
+- Redux actions handle state changes independently
+- Supabase logic is centralized in a single client file
 
-JavaScript (ES6+)
+This ensures:
+- Easier maintenance
+- Better scalability
+- Clear responsibility per module
 
-CSS
+---
 
-Backend & Cloud Services
-
-Supabase
-
-Authentication
-
-Database (PostgreSQL)
-
-API access
-
-Development Tools
-
-Node.js & npm
-
-Git & GitHub
-
-🧠 System Architecture
-
-This project follows a Component-Based, Event-Driven Architecture:
-
-UI Components handle rendering
-
-Redux manages global game state
-
-Actions & Reducers handle game logic
-
-Supabase provides backend services
-
-Events trigger state updates (card click, game over, login)
-
-🔐 Virtual Identity (User Authentication)
-
-User identity is managed using Supabase Authentication.
-
-Features:
-
-Secure email & password login
-
-Automatic session management
-
-Unique user IDs
-
-Optional display name support
-
-This allows:
-
-Personalized gameplay
-
-Accurate score ownership
-
-Secure leaderboard entries
-
-🏆 Leaderboard & Score Management
-
-Scores are saved to Supabase after each game
-
-Each score is linked to a user account
-
-The leaderboard fetches top scores dynamically
-
-Data is sorted in descending order
-
-This demonstrates real-time data interoperability between frontend and backend services.
-
-🧩 Key Software Engineering Concepts Applied
-🔹 Low Coupling
-
-UI components do not directly manipulate game logic
-
-Supabase logic is separated into service calls
-
-Redux actions are isolated from UI components
-
-🔹 High Cohesion
-
-Each file has a single responsibility:
-
-Components → UI
-
-Actions → Events
-
-Reducers → State logic
-
-Pages → Screen-level logic
-
-🔹 Event-Driven Architecture
+### 2️⃣ Event-Driven Architecture (EDA)
+The application follows an **event-driven flow**:
 
 Examples:
+- Card click → dispatch action → update Redux store
+- Login button click → authentication event → session update
+- Game end → score submission event → leaderboard refresh
 
-Card click → Redux action dispatched
+UI-triggered events drive the entire system without tight dependencies.
 
-Timer end → Game over event
+---
 
-Login success → User state updated
+### 3️⃣ Interoperability
+The system interoperates with **external services**:
 
-Game end → Score saved automatically
+- **Supabase Authentication API**
+- **Supabase Database API**
+- REST-based communication using HTTPS
+- JSON-based data exchange
 
-🔹 Interoperability
+This demonstrates real-world distributed system interaction.
 
-React frontend communicates with Supabase via APIs
+---
 
-JSON data exchanged securely
+### 4️⃣ Virtual Identity
+User identity is managed virtually using Supabase:
 
-Cloud services work independently but seamlessly
+- No passwords stored locally
+- Secure JWT-based authentication
+- Each user is identified by a unique Supabase user ID
+- Display Name stored separately for leaderboard visibility
 
-🔹 Virtual Identity
+---
 
-Supabase assigns unique identities
+## 🔐 Why Supabase Authentication
+Supabase Authentication was selected because it provides a **secure, modern, and fully managed identity system** suitable for distributed applications.
 
-User sessions persist securely
+Benefits:
+- Built-in session management
+- Secure password handling
+- Token-based authentication
+- Easy frontend integration
+- No need to build custom auth logic
 
-Scores and profiles are linked to authenticated users
+This allows the application to focus on **game logic**, not security implementation.
 
-📁 Project Structure
-src/
-│── actions/          # Redux action definitions
-│── components/       # Reusable UI components
-│── pages/            # Main screens (Game, Auth)
-│── reducers/         # Redux reducers
-│── utils/            # Helper logic (card logic)
-│── styles/           # CSS styles
-│── supabaseClient.js # Supabase configuration
-│── App.js            # App entry
-│── index.js          # React bootstrap
+---
 
-▶️ How to Run the Project
+## 🗂️ Code Structure Overview
 
-Install Node.js
+###src/
+###│── actions/ → Redux action definitions
+###│── reducers/ → Redux reducers
+###│── pages/ → Main pages (AuthPage, Game)
+###│── components/ → Reusable UI components
+###│── supabaseClient.js → Supabase configuration
+###│── App.js → Root component
+###│── index.js → Application entry point
 
-Clone the repository
 
-Run npm install
+**Architecture Style:**  
+👉 *Component-Based, Event-Driven Frontend Architecture with Centralized State Management (Redux)*
 
-Create .env.local with Supabase keys
+---
 
-Run npm start
+## 🔊 Sound Features
+The game includes:
+- Background music (MP3)
+- Button click sound
+- Card flip sound
 
-Open http://localhost:3000
+All sounds are triggered by UI events to enhance user experience.
+---
+##🧹 Open-Source Modification Notice
 
-(Full steps provided in the Instructions section)
+###This project is based on an open-source card game.
+###The following changes were made:
 
-🎥 Demonstration Video
+-Removed unused backend API logic
+-Replaced authentication with Supabase
+-Refactored Redux actions and reducers
+-Redesigned UI and user flow
+-Added leaderboard and identity support
 
-The submitted video demonstrates:
+##All unused and irrelevant code was removed to ensure clarity, originality, and academic compliance.
 
-Login & authentication
+##✅ Learning Outcomes Achieved
 
-Gameplay mechanics
+-Practical use of distributed services
+-Real-world authentication integration
+-Event-driven frontend design
+-Clean modular architecture
+-Secure virtual identity handling
 
-Score calculation
+#🏁 Conclusion
 
-Leaderboard updates
+##This project demonstrates how a simple game can be transformed into a distributed, scalable, and user-focused system by applying modern architectural principles.
+---
 
-Code walkthrough and explanation
+## ▶️ How to Run the Project
 
-📚 Learning Outcomes
+### Prerequisites
+- Node.js (v16 or later)
+- npm or yarn
 
-Through this project, I gained hands-on experience with:
+---
+## The application will run at:
 
-React & Redux architecture
+http://localhost:3000
 
-Cloud authentication systems
+### Steps
 
-Real-time databases
+```bash
+git clone https://github.com/your-username/Card_Game_60K.git
+cd Card_Game_60K
+npm install
+npm start
 
-Event-driven UI development
 
-Clean code organization
-
-Secure web application design
-
-✅ Conclusion
-
-This project successfully combines game design with modern web application architecture.
-It demonstrates both technical competency and software engineering best practices, resulting in a scalable, maintainable, and user-focused application.
