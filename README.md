@@ -191,7 +191,7 @@ http://localhost:3000
 ### Steps
 
 ```bash
-git clone https://github.com/your-username/Card_Game_60K.git
+
 cd Card_Game_60K
 npm install
 npm start
